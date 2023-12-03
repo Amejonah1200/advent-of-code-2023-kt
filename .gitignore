@@ -4,3 +4,4 @@ build
 src/**/*.txt
 inputs/Day02.txt
 inputs/Day01.txt
+inputs/Day03.txt

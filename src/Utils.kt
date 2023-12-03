@@ -23,6 +23,8 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
  */
 fun Any?.println() = println(this)
 
-fun Any?.alsoPrintln() = also(::println)
+fun <T> T.alsoPrintln() = also(::println)
+
+fun <T> T.alsoPrintln(transform: (T) -> Any) = also { transform(this).println() }
 
 fun checkEqual(result: Int, expected: Int) = check(result == expected) { "Expected $expected, got $result" }
