@@ -2,6 +2,5 @@
 .idea
 build
 src/**/*.txt
-inputs/*
 inputs/Day02.txt
 inputs/Day01.txt
