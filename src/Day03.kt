@@ -18,7 +18,7 @@ fun main() {
     ) = rn.findAll(l).filter { m ->
         val searchRange = IntRange(
             (m.range.first - 1).coerceAtLeast(0),
-            (m.range.last + 1).coerceAtMost(l.length - 1)
+            (m.range.last + 1).coerceAtMost(l.lastIndex)
         )
         sequence {
             yield(l[searchRange.first])
