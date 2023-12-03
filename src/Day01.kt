@@ -10,23 +10,12 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        val numbers = buildMap {
-            put("one", "1")
-            put("two", "2")
-            put("three", "3")
-            put("four", "4")
-            put("five", "5")
-            put("six", "6")
-            put("seven", "7")
-            put("eight", "8")
-            put("nine", "9")
-        }
         val r = Regex("(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)|(\\d)")
         return input.sumOf { l ->
             buildList {
                 var m = r.find(l)
                 while (m != null) {
-                    add(numbers[m.value] ?: m.value)
+                    add((m.groupValues.indexOfLast { it.isNotEmpty() }).takeIf { it < 10 }?.toString() ?: m.value)
                     m = r.find(l, m.range.first + 1)
                 }
             }.let { (it.first() + it.last()).toInt() }
@@ -34,8 +23,8 @@ fun main() {
     }
 
 
-    check(part1(readInput("Day01_test1") ?: return) == 142)
-    check(part2(readInput("Day01_test2") ?: return) == 281)
+    checkEqual(part1(readInput("Day01_test1") ?: return), 142)
+    checkEqual(part2(readInput("Day01_test2") ?: return), 281)
 
     val input = readInput("Day01") ?: return
     part1(input).println()
