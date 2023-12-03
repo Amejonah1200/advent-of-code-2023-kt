@@ -27,8 +27,9 @@ fun main() {
     }
 
 
-    checkEqual(part1(readGames("Day02_test1") ?: return), 8)
-    checkEqual(part2(readGames("Day02_test2") ?: return), 2286)
+    val testGames = readGames("Day02_test") ?: return
+    checkEqual(part1(testGames), 8)
+    checkEqual(part2(testGames), 2286)
 
     val input = readGames("Day02") ?: return
     part1(input).println()
