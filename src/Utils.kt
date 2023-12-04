@@ -27,4 +27,8 @@ fun <T> T.alsoPrintln() = also(::println)
 
 fun <T> T.alsoPrintln(transform: (T) -> Any) = also { transform(this).println() }
 
-fun checkEqual(result: Int, expected: Int) = check(result == expected) { "Expected $expected, got $result" }
+fun checkEqual(result: Int, expected: Int, exception: Boolean = true) {
+    if (exception) check(result == expected) { "Expected $expected, got $result" }
+    else if(result != expected) System.err.println("Expected $expected, got $result")
+}
+fun checkEqualQuick(result: Int, expected: Int) = checkEqual(result, expected, false)
